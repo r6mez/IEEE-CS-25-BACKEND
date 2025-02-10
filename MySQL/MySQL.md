@@ -26,6 +26,8 @@ SQL is a standard language for accessing and manipulating databases.
 ## What is RDBMS?
 RDBMS stands for Relational Database Management System. It is a type of database management system (DBMS) that stores data using rows and columns in tables. The data in these tables are related to each other through keys, which allows for efficient querying and manipulation of the data. 
 
+(Reference)[https://www.geeksforgeeks.org/rdbms-full-form/]
+
 ## RDBMS vs DBMS
 
 | **Aspect**               | **DBMS**                                      | **RDBMS**                                     |
@@ -36,6 +38,9 @@ RDBMS stands for Relational Database Management System. It is a type of database
 | **Scalability**          | Less scalable for large datasets.            | Highly scalable for large datasets.           |
 | **Examples**             | File systems, XML databases, etc.            | MySQL, PostgreSQL, Oracle, SQL Server,    |
 | **Query Language**       | May use proprietary query languages.         | Uses SQL (Structured Query Language).         |
+
+[Refernce](https://www.geeksforgeeks.org/difference-between-rdbms-and-dbms/)
+
 
 ## Naming Conventions in RDBMS
 ### 1. **Table Names**
@@ -79,6 +84,8 @@ RDBMS stands for Relational Database Management System. It is a type of database
 ### 9. **Database Name**
 - Use **snake_case** or **camelCase**.
 - Examples: `ecommerce_db`, `inventoryManagement`.
+
+[Reference](https://www.coding-guidelines.lftechnology.com/docs/rdbms/rdbms-naming-convention/)
 
 
 ## Primary Keys vs. Unique Keys
