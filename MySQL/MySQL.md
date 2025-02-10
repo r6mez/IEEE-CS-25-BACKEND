@@ -37,45 +37,94 @@ RDBMS stands for Relational Database Management System. It is a type of database
 | **Examples**             | File systems, XML databases, etc.            | MySQL, PostgreSQL, Oracle, SQL Server,    |
 | **Query Language**       | May use proprietary query languages.         | Uses SQL (Structured Query Language).         |
 
-# Naming Conventions in RDBMS
-## 1. **Table Names**
+## Naming Conventions in RDBMS
+### 1. **Table Names**
 - Use **singular nouns** (e.g., `User`, `Product`).
 - Use **PascalCase** or **snake_case**.
 - Examples: `Customer`, `OrderDetail`, `product_category`.
 
-## 2. **Column Names**
+### 2. **Column Names**
 - Use **snake_case** (e.g., `first_name`) or **camelCase** (e.g., `firstName`).
 - Be descriptive and avoid random abbreviations.
 - Examples: `email_address`, `lastName`.
 
-## 3. **Primary Keys**
+### 3. **Primary Keys**
 - Use `id` as the column name for the primary key.
 - Example: `id` in the `User` table.
 
-## 4. **Foreign Keys**
+### 4. **Foreign Keys**
 - Use the referenced table name + `_id`.
 - Example: `user_id` in the `Order` table (references `User` table).
 
-## 5. **Indexes**
+### 5. **Indexes**
 - Start with `idx_` + table name + column name.
 - Example: `idx_user_email` for an index on the `email` column in the `User` table.
 
-## 6. **Constraints**
+### 6. **Constraints**
 - Use prefixes like:
   - `pk_` for primary keys (e.g., `pk_user`).
   - `fk_` for foreign keys (e.g., `fk_order_user`).
   - `uk_` for unique keys (e.g., `uk_user_email`).
   - `ck_` for check constraints (e.g., `ck_age_positive`).
 
-## 7. **Stored Procedures/Functions**
+### 7. **Stored Procedures/Functions**
 - Use prefixes:
   - `sp_` for stored procedures (e.g., `sp_get_user_details`).
   - `fn_` for functions (e.g., `fn_calculate_discount`).
 
-## 8. **Views**
+### 8. **Views**
 - Start with `vw_` + descriptive name.
 - Example: `vw_customer_orders`.
 
-## 9. **Database Name**
+### 9. **Database Name**
 - Use **snake_case** or **camelCase**.
 - Examples: `ecommerce_db`, `inventoryManagement`.
+
+
+## Primary Keys vs. Unique Keys
+
+In relational databases like MySQL, both primary keys and unique keys are used to enforce uniqueness in a table's columns, but they have distinct characteristics and purposes.
+
+**Primary Key**:
+- **Uniqueness**: Ensures that each row in a table is unique.
+- **NULL Values**: Does not allow NULL values.
+- **Number per Table**: Only one primary key is permitted per table.
+- **Indexing**: Automatically creates a clustered index, which determines the physical order of data in the table.
+
+**Unique Key**:
+- **Uniqueness**: Ensures that the data in a column or a set of columns is unique across all rows.
+- **NULL Values**: Allows one NULL value per column.
+- **Number per Table**: Multiple unique keys can be defined in a table.
+- **Indexing**: Creates a non-clustered index, which does not affect the physical order of data.
+
+[Reference: Difference between Primary key and Unique key](https://www.geeksforgeeks.org/difference-between-primary-key-and-unique-key/).
+
+## Constraints in MySQL
+
+Constraints are rules enforced on data columns in a table to ensure the integrity and accuracy of the data. MySQL supports several types of constraints:
+
+- **NOT NULL**: Ensures that a column cannot have a NULL value.
+- **UNIQUE**: Ensures that all values in a column are unique.
+- **PRIMARY KEY**: A combination of NOT NULL and UNIQUE. Uniquely identifies each row in a table.
+- **FOREIGN KEY**: Ensures referential integrity by linking the values in one table to those in another.
+- **CHECK**: Ensures that all values in a column satisfy a specific condition. (Note: As of MySQL 8.0.16, the CHECK constraint is parsed but ignored.)
+
+[Reference: MySQL Constraints](https://www.w3schools.com/mysql/mysql_constraints.asp).
+
+## Indexing in MySQL
+
+Indexes are special data structures that improve the speed of data retrieval operations on a database table at the cost of additional storage space and potential performance overhead during data modification operations.
+
+**Benefits of Indexing**:
+- **Faster Query Performance**: Indexes allow the database to find data without scanning the entire table.
+- **Efficient Sorting**: They help in quickly sorting the data.
+
+**Types of Indexes in MySQL**:
+- **Primary Key Index**: Automatically created when a primary key is defined.
+- **Unique Index**: Ensures all values in the index are unique.
+- **Full-Text Index**: Used for full-text searches.
+- **Spatial Index**: Used for spatial data types.
+
+It's important to use indexes judiciously, as they can slow down write operations like INSERT, UPDATE, and DELETE due to the overhead of maintaining the index structure.
+
+[Reference: How MySQL Uses Indexes](https://dev.mysql.com/doc/en/mysql-indexes.html).
