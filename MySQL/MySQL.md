@@ -135,3 +135,70 @@ Indexes are special data structures that improve the speed of data retrieval ope
 It's important to use indexes judiciously, as they can slow down write operations like INSERT, UPDATE, and DELETE due to the overhead of maintaining the index structure.
 
 [Reference: How MySQL Uses Indexes](https://dev.mysql.com/doc/en/mysql-indexes.html).
+
+
+## Relations 
+
+### One-to-One (1:1)
+- In this type of relationship, a single record in Table A corresponds to a single record in Table B.
+- Example: A user and a user profile table where each user has exactly one profile.
+- Implemented using unique constraints or primary keys in both tables.
+
+### One-to-Many (1:M)
+- A record in Table A can be linked to multiple records in Table B, but each record in Table B is linked to only one record in Table A.
+- Example: A customer placing multiple orders.
+- Implemented using foreign keys where the primary key of Table A is referenced in Table B.
+
+### Many-to-Many (M:N)
+- A record in Table A can relate to multiple records in Table B, and vice versa.
+- Example: Students enrolling in multiple courses, and courses having multiple students.
+- Implemented using a junction table that contains foreign keys referencing both Table A and Table B.
+
+[Reference](https://www.w3schools.com/sql/sql_foreignkey.asp)
+
+---
+
+## Write-Ahead Logging (WAL)
+
+Write-ahead logging (WAL) is a database mechanism that ensures data integrity by writing changes to a log before applying them to the database.
+
+### How It Works:
+1. When a transaction modifies data, it is first written to a log file.
+2. The database applies the changes from the log file to the actual database storage.
+3. If a failure occurs, the database can recover by replaying the log.
+
+### Benefits:
+- Provides durability and atomicity (ACID properties).
+- Speeds up database transactions since logs can be written sequentially before actual disk writes.
+- Enables database recovery in case of a crash.
+
+[Reference](https://www.postgresql.org/docs/current/wal-intro.html)
+
+---
+
+## Normalization vs. Denormalization
+
+Normalization and denormalization are two techniques used in database design to optimize structure and performance.
+
+### Normalization
+- Process of organizing data to minimize redundancy and improve integrity.
+- Involves dividing large tables into smaller ones and defining relationships.
+- Common normal forms: 1NF, 2NF, 3NF, BCNF.
+- Example: Storing customer addresses in a separate table instead of repeating them in every order.
+
+### Denormalization
+- The process of merging tables and introducing redundancy to improve read performance.
+- Reduces the need for complex joins in queries.
+- Used in analytical databases where speed is prioritized over data redundancy.
+- Example: Storing customer addresses directly in the orders table to reduce joins.
+
+### Differences:
+| Feature          | Normalization | Denormalization |
+|----------------|--------------|----------------|
+| Redundancy     | Reduced      | Increased      |
+| Query Speed   | Slower (more joins) | Faster (fewer joins) |
+| Storage Efficiency | More efficient | Less efficient |
+| Data Integrity | Higher       | Lower          |
+
+[Reference](https://www.geeksforgeeks.org/normalization-vs-denormalization-in-dbms/)
+
