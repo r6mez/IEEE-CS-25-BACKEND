@@ -5,14 +5,14 @@ A database is an electronically stored, systematic collection of data that can i
 
 managed using specialized software -> Database Management System (DBMS)
 
-[reference](https://www.geeksforgeeks.org/what-is-database/)
+[References](https://www.geeksforgeeks.org/what-is-database/)
 
 ## What is the SQL?
 Stands for (Structured Query Language).
 
 SQL is a standard language for accessing and manipulating databases.
 
-[reference](https://www.w3schools.com/sql/sql_intro.asp)
+[References](https://www.w3schools.com/sql/sql_intro.asp)
 
 ## What are the most 5 famous DBs in the world now? and why?
 1. **Oracle**: Data warehousing ..  gives flexibly and also it costs lesser.
@@ -21,12 +21,12 @@ SQL is a standard language for accessing and manipulating databases.
 4. **PostgreSQL**: open-source, supports many advanced programming languages
 5. **MongoDB**: open-source, It stores data in the form of a document and collections which means the data are not stored using rows and columns, much faster as compared to a relational database. 
 
-[reference](https://www.geeksforgeeks.org/most-popular-databases/)
+[References](https://www.geeksforgeeks.org/most-popular-databases/)
 
 ## What is RDBMS?
 RDBMS stands for Relational Database Management System. It is a type of database management system (DBMS) that stores data using rows and columns in tables. The data in these tables are related to each other through keys, which allows for efficient querying and manipulation of the data. 
 
-(Reference)[https://www.geeksforgeeks.org/rdbms-full-form/]
+[References](https://www.geeksforgeeks.org/rdbms-full-form/)
 
 ## RDBMS vs DBMS
 
@@ -39,7 +39,7 @@ RDBMS stands for Relational Database Management System. It is a type of database
 | **Examples**             | File systems, XML databases, etc.            | MySQL, PostgreSQL, Oracle, SQL Server,    |
 | **Query Language**       | May use proprietary query languages.         | Uses SQL (Structured Query Language).         |
 
-[Refernce](https://www.geeksforgeeks.org/difference-between-rdbms-and-dbms/)
+[Refernces](https://www.geeksforgeeks.org/difference-between-rdbms-and-dbms/)
 
 
 ## Naming Conventions in RDBMS
@@ -104,7 +104,7 @@ In relational databases like MySQL, both primary keys and unique keys are used t
 - **Number per Table**: Multiple unique keys can be defined in a table.
 - **Indexing**: Creates a non-clustered index, which does not affect the physical order of data.
 
-[Reference: Difference between Primary key and Unique key](https://www.geeksforgeeks.org/difference-between-primary-key-and-unique-key/).
+[References](https://www.geeksforgeeks.org/difference-between-primary-key-and-unique-key/).
 
 ## Constraints in MySQL
 
@@ -116,7 +116,7 @@ Constraints are rules enforced on data columns in a table to ensure the integrit
 - **FOREIGN KEY**: Ensures referential integrity by linking the values in one table to those in another.
 - **CHECK**: Ensures that all values in a column satisfy a specific condition. (Note: As of MySQL 8.0.16, the CHECK constraint is parsed but ignored.)
 
-[Reference: MySQL Constraints](https://www.w3schools.com/mysql/mysql_constraints.asp).
+[References](https://www.w3schools.com/mysql/mysql_constraints.asp).
 
 ## Indexing in MySQL
 
@@ -134,7 +134,7 @@ Indexes are special data structures that improve the speed of data retrieval ope
 
 It's important to use indexes judiciously, as they can slow down write operations like INSERT, UPDATE, and DELETE due to the overhead of maintaining the index structure.
 
-[Reference: How MySQL Uses Indexes](https://dev.mysql.com/doc/en/mysql-indexes.html).
+[References](https://dev.mysql.com/doc/en/mysql-indexes.html).
 
 
 ## Relations 
@@ -154,7 +154,7 @@ It's important to use indexes judiciously, as they can slow down write operation
 - Example: Students enrolling in multiple courses, and courses having multiple students.
 - Implemented using a junction table that contains foreign keys referencing both Table A and Table B.
 
-[Reference](https://www.w3schools.com/sql/sql_foreignkey.asp)
+[References](https://www.w3schools.com/sql/sql_foreignkey.asp)
 
 ---
 
@@ -172,7 +172,7 @@ Write-ahead logging (WAL) is a database mechanism that ensures data integrity by
 - Speeds up database transactions since logs can be written sequentially before actual disk writes.
 - Enables database recovery in case of a crash.
 
-[Reference](https://www.postgresql.org/docs/current/wal-intro.html)
+[References](https://www.postgresql.org/docs/current/wal-intro.html)
 
 ---
 
@@ -200,5 +200,100 @@ Normalization and denormalization are two techniques used in database design to 
 | Storage Efficiency | More efficient | Less efficient |
 | Data Integrity | Higher       | Lower          |
 
-[Reference](https://www.geeksforgeeks.org/normalization-vs-denormalization-in-dbms/)
+[References](https://www.geeksforgeeks.org/normalization-vs-denormalization-in-dbms/)
+
+
+## Multi-Version Concurrency Control (MVCC)
+
+### What is MVCC?
+Multi-Version Concurrency Control (MVCC) is a method used in database management systems to handle concurrency and ensure consistency without locking rows. Instead of blocking other transactions when a row is being modified, MVCC allows multiple versions of the data to exist simultaneously. This improves performance by enabling read transactions to access older versions of the data while writes occur.
+
+### How it Works
+- When a transaction modifies a row, the database creates a new version of that row instead of overwriting it.
+- Other transactions that started before the modification can still read the old version.
+- The system uses timestamps or transaction IDs to keep track of versions.
+- Older versions are removed through garbage collection once no transaction needs them.
+
+### Advantages
+- Reduces contention between read and write operations.
+- Provides better performance for read-heavy workloads.
+- Avoids blocking reads, making queries faster.
+
+### Disadvantages
+- Requires more storage due to multiple row versions.
+- Garbage collection can introduce overhead.
+
+### References
+- [Reference 1](https://www.postgresql.org/docs/current/mvcc-intro.html)
+- [Reference 2](https://docs.oracle.com/en/database/)
+
+---
+
+## Triggers
+
+### What are Triggers?
+A trigger is a special kind of stored procedure that automatically executes in response to certain events on a table, such as INSERT, UPDATE, or DELETE operations.
+
+### How Triggers Work
+- Triggers are associated with a specific table.
+- They activate before or after a specified event.
+- They can be used to enforce business rules, log changes, or update related tables.
+
+### Types of Triggers
+1. **Before Triggers**: Execute before the event occurs, allowing validation or modification of incoming data.
+2. **After Triggers**: Execute after the event, often used for logging changes.
+3. **Instead of Triggers**: Used in views to handle updates indirectly.
+
+### Use Cases
+- Auditing changes to a database table.
+- Maintaining consistency between related tables.
+- Implementing complex validation rules.
+
+### Example SQL Trigger
+```sql
+CREATE TRIGGER update_log
+AFTER INSERT ON employees
+FOR EACH ROW
+BEGIN
+    INSERT INTO employee_log (employee_id, action, timestamp)
+    VALUES (NEW.id, 'INSERT', NOW());
+END;
+```
+
+### References
+- [Reference 1](https://dev.mysql.com/doc/refman/8.0/en/triggers.html)
+- [Reference 2](https://www.postgresql.org/docs/current/plpgsql-trigger.html)
+
+---
+
+## How to Take a Backup of a Database
+
+### Why Backup a Database?
+A database backup is essential for disaster recovery, preventing data loss due to hardware failures, accidental deletions, or cyberattacks.
+
+### Backup Methods
+1. **Logical Backup**
+   - Exports database data in a format like SQL or CSV.
+   - Tools: `mysqldump` (MySQL), `pg_dump` (PostgreSQL).
+
+2. **Physical Backup**
+   - Copies the database files directly.
+   - Faster but requires stopping the database.
+   
+3. **Incremental Backup**
+   - Backs up only the changed data since the last backup.
+   - Efficient in terms of storage.
+
+4. **Cloud-Based Backup**
+   - Uses services like AWS RDS snapshots or Google Cloud SQL backups.
+   
+
+### Best Practices
+- Schedule regular backups.
+- Store backups in multiple locations.
+- Test restoration procedures periodically.
+
+### References
+- [Reference 1](https://dev.mysql.com/doc/mysql-backup-excerpt/8.0/en/)
+- [Reference 2](https://www.postgresql.org/docs/current/backup.html)
 
