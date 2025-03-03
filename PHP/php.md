@@ -124,3 +124,37 @@ echo "Value of c: $c\n"; // Output: 20
 ```
 
 [References](https://www.javascripttutorial.net/javascript-pass-by-value-vs-pass-by-reference/)  
+
+---
+## Difference Between `for` and `foreach` Loop in PHP
+
+### `for` Loop in PHP
+
+The `for` loop is typically used when the number of iterations is known beforehand. It consists of three parts:  
+1. **Initialization** – Defines the starting value of the loop variable.  
+2. **Condition** – Specifies the condition that must be met for the loop to continue executing.  
+3. **Increment/Decrement** – Modifies the loop variable after each iteration.  
+
+#### Syntax:
+```php
+for ($i = 0; $i < 5; $i++) {
+    echo "Iteration: $i <br>";
+}
+```
+
+### `foreach` Loop in PHP
+
+The `foreach` loop is specifically designed for iterating over arrays and objects. Unlike `for`, it directly assigns each element of the array to a variable without requiring an index, So it's used when:
+- When dealing with arrays or objects.
+- When you don't need a loop counter and want to work with values directly.
+
+#### Syntax:
+```php
+$colors = ["Red", "Green", "Blue"];
+foreach ($colors as $color) {
+    echo "Color: $color <br>";
+}
+```
+References
+- [PHP for Loop (W3Schools)](https://www.w3schools.com/php/php_looping_for.asp)
+- [PHP foreach Loop (W3Schools)](https://www.w3schools.com/php/php_looping_foreach.asp)
