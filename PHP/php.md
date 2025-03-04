@@ -158,3 +158,82 @@ foreach ($colors as $color) {
 References
 - [PHP for Loop (W3Schools)](https://www.w3schools.com/php/php_looping_for.asp)
 - [PHP foreach Loop (W3Schools)](https://www.w3schools.com/php/php_looping_foreach.asp)
+
+---
+## Sessions vs. Cookies
+
+Sessions and cookies are both used to store user-related data, but they work differently.
+
+### **Sessions**
+- A session is a way to store user data on the server.
+- It creates a unique session ID for each user.
+- Data is stored temporarily and is accessible across multiple pages until the session expires or is destroyed.
+- Sessions are useful for storing sensitive data since they are not stored on the client-side.
+
+### **Cookies**
+- Cookies are small text files stored on the user's device.
+- They are used to remember user preferences, login details, and other data across sessions.
+- Cookies have an expiration date and can persist even after the browser is closed.
+- Since cookies are stored on the client side, they can be accessed and modified by the user, making them less secure compared to sessions.
+
+[References](https://www.geeksforgeeks.org/difference-between-session-and-cookie/)
+
+---
+
+## Error Handling in PHP
+
+### **Types of Errors**
+1. **Notices** – Minor errors that do not stop script execution (e.g., accessing an undefined variable).
+2. **Warnings** – More serious than notices, but the script still continues (e.g., including a missing file).
+3. **Fatal Errors** – Critical errors that stop script execution (e.g., calling a non-existent function).
+4. **Parse Errors** – Syntax errors detected before execution.
+
+### **Handling Errors in PHP**
+- **Using `error_reporting()`** – Controls which errors PHP reports.
+  ```php
+  error_reporting(E_ALL);
+  ```
+- **Using `set_error_handler()`** – Custom error handler function.
+  ```php
+  function customError($errno, $errstr) {
+      echo "Error: [$errno] $errstr";
+  }
+  set_error_handler("customError");
+  ```
+- **Using `try...catch` for Exception Handling**
+  ```php
+  try {
+      if (!file_exists("file.txt")) {
+          throw new Exception("File not found");
+      }
+  } catch (Exception $e) {
+      echo "Error: " . $e->getMessage();
+  }
+  ```
+- **Logging Errors** – Errors can be logged instead of displaying them.
+  ```php
+  ini_set('log_errors', 1);
+  ini_set('error_log', 'errors.log');
+  ```
+
+[References](https://www.php.net/manual/en/errorfunc.configuration.php)
+
+---
+
+## How PHP Executes Code
+
+PHP executes code in a step-by-step process known as the PHP lifecycle.
+
+### **PHP Execution Process**
+1. **Request Handling** – When a user requests a PHP page, the server processes the request.
+2. **Lexing & Parsing** – PHP converts the script into tokens and then builds an Abstract Syntax Tree (AST).
+3. **Compilation to Opcodes** – PHP compiles the AST into intermediate bytecode (opcodes) for faster execution.
+4. **Execution by Zend Engine** – The Zend Engine interprets and executes the opcodes.
+5. **Output Handling** – The final output is sent to the browser.
+
+### **PHP Execution Modes**
+- **Web Server Execution** – PHP runs within a web server like Apache or Nginx.
+- **CLI (Command Line Interface) Execution** – PHP scripts can be executed in a terminal.
+- **Embedded PHP** – PHP can be embedded within other applications.
+
+[References](https://www.php.net/manual/en/internals2.php)
